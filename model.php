@@ -241,7 +241,7 @@ SCRIPT;
         // アップロードファイルの保存
         // *************************************
         if ( @move_uploaded_file( $_FILES[$image_target]['tmp_name'], "{$data_path}/{$target}" ) ) {
-            $stmt = $dbh->query( "SELECT LAST_INSERT_ID() as id" );
+            $stmt = $dbh->query( "SELECT LAST_INSERT_ROWID() as id" );
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             write_image_data( $row["id"], $target );
 
